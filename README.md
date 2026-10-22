@@ -21,6 +21,18 @@ Open the localhost address printed by the terminal. Ctrl+C stops the server. Che
 
 The first visit seeds ONE $100 Allowance income dated today. Use fictional transactions. Log means record a transaction, not log in.
 
+## Publish on GitHub Pages
+
+GitHub Pages can host the static frontend, but it cannot run the Node.js server or `/api/classify` advisor endpoint. On Pages, the advisor is unavailable; transactions and reflections still work and remain in that browser's local storage.
+
+Build the static site into `docs/`:
+
+```sh
+npm run build:pages
+```
+
+Commit and push the generated `docs/` files. In the GitHub repository, open **Settings → Pages**, choose **Deploy from a branch**, select branch **main** and folder **/docs**, then save. The Pages link will appear in the same settings page after deployment completes.
+
 ## Teacher reference components
 
 `teacher/Charts.tsx`, `teacher/Goal.tsx` and `teacher/Advisor.tsx` are fallback examples. Copy only the needed file's contents into the corresponding `src/components` file. The examples' relative imports are designed for that destination. Students implement one module at a time with PROMPTS.md.

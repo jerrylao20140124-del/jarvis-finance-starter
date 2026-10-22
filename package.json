@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "build": "tsc --noEmit && vite build",
+    "build:pages": "tsc --noEmit && vite build --mode pages --base=/jarvis-finance-starter/ --outDir docs",
     "test": "node --import tsx --test src/money.test.ts"
   },
   "dependencies": {

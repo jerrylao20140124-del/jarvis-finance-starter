@@ -27,6 +27,7 @@ function validateAnalysis(value:unknown):Analysis {
 }
 
 export default function Advisor({rows}:{rows:Transaction[]}) {
+ const isPages=import.meta.env.MODE==='pages';
  const expenses=rows.filter(row=>row.kind==='expense');
  const [selectedId,setSelectedId]=useState(()=>expenses[0]?.id||'');
  const selected=expenses.find(row=>row.id===selectedId)||expenses[0];
@@ -101,7 +102,7 @@ export default function Advisor({rows}:{rows:Transaction[]}) {
 	 <label>Your judgment<select value={reflection.judgment} disabled={pending} onChange={event=>updateReflection({judgment:event.target.value as Judgment})}>
 		<option value="need">Need</option><option value="want">Want</option><option value="unsure">Unsure</option>
 	 </select></label>
-	<button type="button" disabled={pending||!selected} onClick={analyse}>{pending?'Analysing spending…':error?'Retry analysis':'Analyse spending'}</button>
+	 {isPages?<p className="muted">The advisor service is unavailable on GitHub Pages. Your judgment and reflection are still saved on this device.</p>:<button type="button" disabled={pending||!selected} onClick={analyse}>{pending?'Analysing spending…':error?'Retry analysis':'Analyse spending'}</button>}
 	 {pending&&<p role="status" aria-live="polite">Analysing spending. Please wait.</p>}
 	 {error&&<p role="alert" className="error">{error}</p>}
 	 {analysis&&<div aria-live="polite" style={{marginTop:18,borderLeft:'2px solid var(--accent)',paddingLeft:16}}>
