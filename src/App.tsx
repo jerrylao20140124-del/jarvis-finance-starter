@@ -27,7 +27,7 @@ export default function App(){
  }catch(e){setError((e as Error).message);}}
  function remove(id:string){const next=rows.filter(r=>r.id!==id);if(balance(next)<0){setError('Removing this income would make the balance negative. Review the related expenses first.');return;}setRows(next);setEvent(null);if(edit===id){setEdit(null);setItem('');setAmount('');}}
  // TODO(STUDENT-UI): Customise the controller name and accent; preserve transaction logic.
- return <main><header><span className="tag">AI FUTURE CREATORS / LAB 03</span><h1>JARVIS Allowance Controller</h1><p>PERSONAL FINANCE INTERFACE · Track cash flow. Understand your choices.</p></header>
+ return <main><header><span className="tag">AI FUTURE CREATORS / LAB 03</span><h1>bug jarvis</h1><p>PERSONAL FINANCE INTERFACE · Track cash flow. Understand your choices.</p></header>
  <ThemeControls/><HudCore cents={cents} event={event} transactions={rows.length}/>
  <section className="card"><h2>{edit?'Edit transaction':'Log a transaction'}</h2><form onSubmit={submit}>
  <label>Date<input type="date" value={date} onChange={e=>setDate(e.target.value)} required/></label>
